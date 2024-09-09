@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анкета</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: azure;
+    }
+    fieldset {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background: lightyellow;
+    }
+    legend {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<h1>Анкета користувача</h1>
+
+<form action="your-server-url" method="post" enctype="multipart/form-data">
+
+  <fieldset>
+    <legend>Особиста інформація</legend>
+    <label for="name">Ім'я</label>
+    <input type="text" id="name" name="name" placeholder="Ваше ім'я" required tabindex="1">
+
+    <label for="surname">Прізвище</label>
+    <input type="text" id="surname" name="surname" placeholder="Ваше прізвище" required tabindex="2">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="example@gmail.com" required autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" tabindex="3">
+
+    <label for="phone">Мобільний номер</label>
+    <input type="tel" id="phone" name="phone" placeholder="(380) 12-345-6789" pattern="^\(380\)\s\d{2}-\d{3}-\d{4}$" required tabindex="4">
+
+    <label for="password">Пароль</label>
+    <input type="password" id="password" name="password" placeholder="Ваш пароль" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Мінімум 6 символів, 1 велика літера, 1 мала літера та 1 цифра" tabindex="5">
+
+    <label for="birthdate">Дата народження</label>
+    <input type="date" id="birthdate" name="birthdate" required tabindex="6">
+  </fieldset>
+
+  <fieldset>
+    <legend>Анкетні дані</legend>
+    <label for="gender">Стать</label>
+    <input type="radio" id="male" name="gender" value="male" required> Чоловік
+    <input type="radio" id="female" name="gender" value="female" required> Жінка
+    <input type="radio" id="other" name="gender" value="other" required> Інше
+
+    <label for="employment">Зайнятість</label>
+    <input type="radio" id="employed" name="employment" value="employed" required> Працевлаштований
+    <input type="radio" id="student" name="employment" value="student" checked> Студент
+    <input type="radio" id="unemployed" name="employment" value="unemployed" required> Безробітний
+  </fieldset>
+
+  <fieldset>
+    <legend>Інші опції</legend>
+    <label for="interests">Інтереси</label>
+    <input type="checkbox" id="music" name="interests" value="music"> Музика
+    <input type="checkbox" id="sports" name="interests" value="sports"> Спорт
+    <input type="checkbox" id="movies" name="interests" value="movies"> Кіно
+    <input type="checkbox" id="books" name="interests" value="books"> Книги
+
+    <label for="country">Виберіть країну</label>
+    <select id="country" name="country" tabindex="7">
+      <option value="ua">Україна</option>
+      <option value="pl">Польща</option>
+      <option value="de" selected>Німеччина</option>
+      <option value="fr">Франція</option>
+      <option value="us">США</option>
+    </select>
+
+    <label for="hobbies">Хобі</label>
+    <select id="hobbies" name="hobbies[]" multiple tabindex="8">
+      <option value="reading">Читання</option>
+      <option value="writing">Писання</option>
+      <option value="coding">Кодинг</option>
+      <option value="travelling">Подорожі</option>
+      <option value="painting">Малювання</option>
+      <option value="photography">Фотографія</option>
+    </select>
+
+    <label for="education">Освіта</label>
+    <select id="education" name="education" tabindex="9">
+      <optgroup label="Шкільна">
+        <option value="primary">Початкова</option>
+        <option value="secondary">Середня</option>
+        <option value="high">Вища</option>
+      </optgroup>
+      <optgroup label="Університетська">
+        <option value="bachelor">Бакалавр</option>
+        <option value="master">Магістр</option>
+        <option value="doctor">Доктор</option>
+      </optgroup>
+    </select>
+
+    <label for="cities">Міста (підказки)</label>
+    <input list="cities" name="city" id="city" placeholder="Оберіть місто">
+    <datalist id="cities">
+      <option value="Київ"></option>
+      <option value="Львів"></option>
+      <option value="Одеса"></option>
+      <option value="Дніпро"></option>
+      <option value="Харків"></option>
+    </datalist>
+
+    <label for="bio">Про себе</label>
+    <textarea id="bio" name="bio" rows="4" placeholder="Напишіть кілька слів про себе..." tabindex="10"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Завантаження файлів</legend>
+    <label for="audio">Завантажте аудіо-файли</label>
+    <input type="file" id="audio" name="audio[]" accept="audio/*" multiple>
+  </fieldset>
+
+  <div class="form-buttons">
+    <button type="submit">Надіслати</button>
+    <button type="reset">Очистити</button>
+  </div>
+</form>
+
+</body>
+</html>
