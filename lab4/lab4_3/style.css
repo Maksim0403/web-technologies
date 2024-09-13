@@ -1,0 +1,25 @@
+a {
+    color: purple;
+}
+
+.main-menu {
+    color: green;
+}
+
+.fruits{
+    a {
+        text-decoration: none;
+    }
+}
+
+.vegetables {
+    list-style-image: url('icons8-галочка-30.png');
+}
+
+.berries {
+    list-style-type: square;
+}
+
+.other {
+    list-style-type: decimal;
+}
