@@ -1,0 +1,38 @@
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+
+}
+
+th, td {
+    border: 1px solid beige;
+    padding: 8px;
+    text-align: center;
+}
+
+td:nth-child(1) {
+    background-color: #e65054;
+}
+
+th:nth-child(2) {
+    background-color: #ffabaf;
+}
+th:nth-child(3) {
+    background-color: #ff8085;
+}
+th:nth-child(4) {
+    background-color: #d63638;
+}
+th:nth-child(5) {
+    background-color: #691c1c;
+}
+
+tr:nth-child(even) {
+    background-color: #ffabaf;
+}
+tr:nth-child(odd) {
+    background-color: #facfd2;
+}
+
