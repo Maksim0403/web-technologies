@@ -1,0 +1,94 @@
+.adventure-plan {
+    background: rgb(255, 165, 0);
+    width: 500px;
+    padding: 20px 20px 20px 20px;
+    color: white;
+    font-family: Arial, Calibri, sans-serif;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+ul li {
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+.main-list > li{
+    background: rgb(103, 158, 128) url("img/checklist_rtl_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    padding-right: 20px;
+    padding-left: 50px;
+    background-size: 35px 35px;
+}
+
+
+.sub-list li {
+    font-size: 18px;
+    font-style: italic;
+    background-color: rgb(153, 180, 102);
+    margin-bottom: 10px;
+    padding-left: 40px;
+}
+
+span {
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+}
+
+.main-span {
+    font-size: 20px;
+    font-weight: 700;
+    background-color: rgb(199, 124, 106);
+    margin-bottom: 10px;
+}
+
+.sub-span {
+    background-color: rgb(218, 106, 32);
+
+}
+
+.sub-item-1 {
+    background:  url("img/smartphone_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24 (1).png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-2 {
+    background:  url("img/airplane_ticket_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-3 {
+    background:  url("img/hotel_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-4 {
+    background:  url("img/car_rental_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-5 {
+    background:  url("img/local_bar_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+
+}
+
+.sub-item-6 {
+    background:  url("img/casino_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-7 {
+    background:  url("img/museum_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+.sub-item-8 {
+    background:  url("img/festival_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png") no-repeat 0 5px;
+    background-size: 35px 35px;
+}
+
+
