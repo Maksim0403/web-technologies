@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: aquamarine;
+}
+
+h1 {
+    color: darkblue;
+    font-size: 32px;
+    text-align: center;
+    background-color: antiquewhite;
+    border: 2px solid darkslategrey;
+    border-radius: 20px;
+    padding: 20px 20px;
+}
+fieldset {
+    margin-bottom: 25px;
+    border: 1px solid darkslategrey;
+    padding: 10px;
+    background: lightyellow;
+    text-align: center;
+    border-radius: 15px;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+legend {
+    font-weight: bold;
+    text-align: center;
+    color: darkblue;
+    font-size: 25px;
+}
+
+label {
+    display: block;
+    color: midnightblue;
+    font-weight: bold;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid darkslategrey;
+    border-radius: 20px;
+    background-color: lightgreen;
+}
+
+select#country {
+    font-style: italic;
+    border-radius: 15px;
+    background: lightcyan;
+    padding: 5px;
+    margin: 5px;
+}
+
+select#hobbies {
+    border: 1px solid darkcyan;
+    padding: 10px;
+    border-radius: 5px;
+    background: darkgray;
+    font: bold 14px/1 Verdana;
+}
+
+select#education {
+    border: 1px solid darkcyan;
+    padding: 10px;
+    border-radius: 5px;
+    background: honeydew;
+    font: bold 15px/1 Algerian;
+}
+
+select#cities {
+    border: 2px solid darkslategrey;
+    padding: 10px;
+    border-radius: 5px;
+    background: honeydew;
+    font: bold 15px/1 Algerian;
+}
+
+textarea{
+    border: 2px solid darkslategrey;
+    background: lightcyan;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    border-radius: 8px;
+    background: darkcyan;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+input#audio {
+    border-radius: 8px;
+    background: darkcyan;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
