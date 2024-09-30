@@ -1,0 +1,135 @@
+.wrapper {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+header {
+    overflow: hidden;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.logo img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    margin-right: 20px;
+    text-align: center;
+}
+ul {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #ff5b2d;
+    color: honeydew;
+    border-radius: 5px;
+}
+
+.content div {
+    width: 300px;
+    float: left;
+    padding-top: 20px;
+    margin: 20px;
+}
+
+.block-1 {
+    padding: 10px ;
+    border: 5px solid yellowgreen;
+    border-radius: 30px;
+}
+
+.block-2 {
+    padding: 10px;
+    border: 5px solid yellowgreen;
+    border-radius: 60px 0;
+}
+
+.block-3 {
+    padding: 10px ;
+    border: 5px solid yellowgreen;
+    border-radius: 100px 250px;
+}
+
+.block-4 {
+    border-top: solid green;
+    border-bottom: solid green;
+    border-left: solid lawngreen;
+    border-right: solid lawngreen;
+    border-width: 15px;
+    border-radius: 80px / 40px;
+}
+
+.block-5 {
+    border-top: solid lawngreen;
+    border-bottom: solid lawngreen;
+    border-left: solid green;
+    border-right: solid green;
+    border-width: 15px;
+    border-radius: 150px 50px / 50px 25px;
+}
+
+.block-6 {
+    border-top: solid lawngreen;
+    border-bottom: solid lawngreen;
+    border-left: solid green;
+    border-right: solid lawngreen;
+    border-width: 15px;
+    border-bottom-right-radius: 100%;
+}
+
+.block-7 {
+    border: 20px solid;
+    border-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png);
+    border-image-slice: 20;
+    border-image-repeat: stretch;
+}
+
+.block-8 {
+    border: 20px solid;
+    border-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png);
+    border-image-slice: 15;
+    border-image-repeat: round;
+}
+
+.block-9 {
+    border: 20px solid;
+    border-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png);
+    border-image-slice: 30;
+    border-image-repeat: round;
+}
+
+.block-10 {
+    border: 20px solid;
+    border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGQ5lSZPa4ICt-HR9bSeRf111jJ-bnXC3x3Q&s);
+    border-image-slice: 55;
+    border-image-repeat: stretch;
+}
+
+.block-11 {
+    border: 20px solid;
+    border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGQ5lSZPa4ICt-HR9bSeRf111jJ-bnXC3x3Q&s);
+    border-image-slice: 40;
+    border-image-repeat: round;
+}
+
+.block-12 {
+    border: 20px solid;
+    border-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGQ5lSZPa4ICt-HR9bSeRf111jJ-bnXC3x3Q&s);
+    border-image-slice: 40;
+    border-image-repeat: stretch;
+}
