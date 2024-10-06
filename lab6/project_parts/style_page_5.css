@@ -1,0 +1,100 @@
+.wrapper {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+header {
+    overflow: hidden;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.logo img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 100px;
+}
+ul {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #ff5b2d;
+    color: honeydew;
+    border-radius: 5px;
+}
+
+.content div {
+    width: 300px;
+    height: 400px;
+    float: left;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.content img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.block-17 {
+    background:
+            linear-gradient(45deg, green, yellow, blue, orange, transparent);
+}
+
+.block-18 {
+    background-color: #eee;
+    background-image:
+            linear-gradient(45deg, green 15%, transparent 25%, transparent 75%, orange 65%, blue),
+            linear-gradient(45deg, yellow 20%, transparent 25%, transparent 75%, purple 75%, orange);
+    background-position: 0 0, 57px 57px;
+    background-size: 114px 114px;
+}
+
+.block-19 {
+    background:
+            linear-gradient(to right, green, white 60px, transparent 60px),
+            repeating-linear-gradient(to right, blue, yellow 60px, transparent 60px);
+    background-size: 33.3333333333%;
+}
+
+
+.block-20 {
+    background-image:
+        linear-gradient(to top left, yellow 200px, transparent 200px),
+        linear-gradient(to top right, green 150px, transparent 150px),
+        linear-gradient(90deg, rgba(251, 169, 21, 255), rgba(40, 28, 218, 1)),
+        linear-gradient(0deg, rgba(253, 253, 253, 50), rgba(255, 255, 255, 0)),
+        radial-gradient(circle at 60% 100%, rgba(253, 253, 253, 30), rgba(0, 0, 0, 0));
+    background-blend-mode: normal, normal, screen;
+    background-size: cover;
+}
+
+.block-21 {
+    background:
+        repeating-linear-gradient(-190deg, rgba(255, 0, 0, 0.5) 40px, rgba(255, 153, 0, 0.5) 80px,
+                  rgba(255, 255, 0, 0.5) 120px, rgba(0, 255, 0, 0.5) 160px, rgba(0, 0, 255, 0.5) 200px,
+                  rgba(75, 0, 130, 0.5) 240px, rgba(238, 130, 238, 0.5) 280px, rgba(255, 0, 0, 0.5) 300px),
+        repeating-linear-gradient(-190deg, rgba(255, 0, 0, 0.5) 30px, rgba(255, 153, 0, 0.5) 60px,
+                  rgba(255, 255, 0, 0.5) 90px, rgba(0, 255, 0, 0.5) 120px, rgba(0, 0, 255, 0.5) 150px,
+                  rgba(75, 0, 130, 0.5) 180px, rgba(238, 130, 238, 0.5) 210px, rgba(255, 0, 0, 0.5) 230px),
+        repeating-linear-gradient(23deg, red 50px, orange 100px, yellow 150px, green 200px, blue 250px, indigo 300px, violet 350px, red 370px);
+}
