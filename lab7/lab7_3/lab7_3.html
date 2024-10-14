@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form">
+    <div id="legend">
+    <h1>Заповніть форму</h1>
+        <h1>Ми вдячні вам</h1>
+    </div>
+
+    <div class="root-form">
+        <div class="form-group">
+            <div>
+                <label for="login">Login </label>
+                <input type="text" id="login" name="login" required tabindex="1">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                       title="Мінімум 6 символів, 1 велика літера, 1 мала літера та 1 цифра" tabindex="3">
+            </div>
+            <div>
+                <label for="name">First Name</label>
+                <input type="text" id="name" name="name" required tabindex="5">
+            </div>
+        </div>
+
+        <div class="form-group1">
+            <div>
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email" required autocomplete="off"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" tabindex="2">
+            </div>
+            <div>
+                <label for="repeat-password">Repeat password</label>
+                <input type="password" id="repeat-password" name="password" required
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                       title="Мінімум 6 символів, 1 велика літера, 1 мала літера та 1 цифра" tabindex="4">
+            </div>
+            <div>
+                <label for="surname">Last Name</label>
+                <input type="text" id="surname" name="surname" required tabindex="6">
+            </div>
+
+        </div>
+
+
+        <div class="about-me">
+            <label for="bio">About me</label>
+            <textarea id="bio" name="bio" rows="4" tabindex="7"></textarea>
+        </div>
+        <div class="form-buttons">
+            <button type="reset" id="reset">RESET</button>
+            <button type="submit" id="submit">OK</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
