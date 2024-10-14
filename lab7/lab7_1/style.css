@@ -1,0 +1,29 @@
+div {
+    display: inline-block;
+    width: 150px;
+    height: 60px;
+    border: 2px solid black;
+}
+p{
+    text-align: center;
+}
+
+.block_1 {
+    position: absolute; top: 80px; left: 50px;
+    background: green;
+    z-index: 0;
+}
+
+.block_2 {
+    position: absolute; top: 35px; left: 190px;
+    background: cornflowerblue;
+    color: white;
+    z-index: 1;
+}
+
+.block_3 {
+    position: absolute; top: 125px; left: 190px;
+    background: cornflowerblue;
+    color: white;
+    z-index: 1;
+}
