@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+}
+
+.gray-square {
+    width: 600px;
+    height: 500px;
+    background-color: gray;
+}
+
+.light-gray-square {
+    width: 250px;
+    height: 150px;
+    background-color: lightgray;
+    position: absolute;
+    top: 325px;
+    box-shadow: 10px 10px dimgray;
+    left: 325px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+p {
+    position: absolute;
+    top: 150px;
+}
+.black-square {
+    color: gray;
+    font-size: 75px;
+    font-weight: bold;
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    right: 0;
+}
+
+
+.overlay-image {
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    width: 400px;
+    opacity: 0.8;
+}
+span {
+    margin-right: 15px;
+
+}
+
+.week-days {
+    position: absolute;
+    top: 90px;
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+}
+
+.arrow {
+    position: absolute;
+    top: 150px;
+    left: 45px;
+    z-index: 2;
+}
+.temperature {
+    position: absolute;
+    top: 110px;
+    font-size: 20px;
+}
