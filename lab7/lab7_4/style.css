@@ -1,0 +1,101 @@
+img {
+    width: 25px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.horizontal-nav {
+    background-color: #333;
+    position: sticky; /* Фіксація панелі */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.horizontal-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.horizontal-nav li {
+    position: relative;
+}
+
+.horizontal-nav a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.horizontal-nav a:hover {
+    background-color: aquamarine;
+}
+
+.horizontal-nav a.active {
+    background-color: #4CAF50;
+}
+
+.horizontal-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+}
+
+.horizontal-nav li:hover > ul {
+    display: block;
+}
+
+.vertical-nav {
+    background-color: #333;
+    height: 100vh;
+    position: fixed;
+    width: 200px;
+    padding: 20px 0;
+}
+
+.vertical-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.vertical-nav li {
+    position: relative;
+}
+
+.vertical-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.vertical-nav a:hover {
+    background-color: aquamarine;
+}
+
+.vertical-nav a.active {
+    background-color: #333;
+}
+
+.vertical-nav ul ul {
+    display: none;
+    background-color: #444;
+}
+
+.vertical-nav li:hover > ul {
+    display: block;
+}
+
+.vertical-nav ul ul li {
+    padding-left: 20px;
+}
