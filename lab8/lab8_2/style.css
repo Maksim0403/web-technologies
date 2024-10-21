@@ -1,0 +1,398 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+header {
+    overflow: hidden;
+    padding-bottom: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+}
+
+.horizontal_menu {
+    display: flex;
+    padding-right: 110px;
+    width: 100%;
+    align-items: center;
+}
+
+.logo {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.logo img {
+    float: left;
+    width: 120px;
+    padding-left: 135px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    padding-left: 400px;
+    list-style-type: none;
+    margin: 0;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #ff5b2d;
+    color: honeydew;
+    border-radius: 5px;
+}
+li img {
+   width: 26px;
+}
+
+.title {
+    padding: 50px 135px;
+    background-color: #f0f4f5;
+    color: gray;
+}
+
+.works {
+    padding-top: 40px;
+}
+
+.works-head {
+    display: flex;
+    margin-left: 135px;
+    margin-right: 135px;
+    justify-content: space-between;
+}
+
+.works-images {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image {
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .works-images {
+        flex: 1 1 calc(50% - 40px);
+    }
+
+    .menu-btn > span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+    }
+
+    .menu-btn > span::before,
+    .menu-btn > span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+        transition: transform .25s;
+    }
+
+    .horizontal_menu {
+        display: block;
+    }
+    .journal-item {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 576px) {
+    .works-images {
+        flex: 1 1 100%;
+    }
+
+    .menu-btn  span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+    }
+    .horizontal_menu {
+        display: none;
+    }
+
+    .journal {
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .journal-item {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .journal-item img {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .journal-item-text {
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+.hamburger-menu {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.hamburger-menu::before, .hamburger-menu::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 3px;
+}
+
+.hamburger-menu::before {
+    top: -10px;
+}
+
+.hamburger-menu::after {
+    top: 10px;
+}
+
+.works img{
+    width: 300px;
+    height: 250px;
+    padding-top: 10px;
+}
+
+.filter{
+    background-color: #ff5b2d;
+    border-color: transparent;
+    color: honeydew;
+    font-family: Calibri, Helvetica, sans-serif;
+    padding: 3px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact h2 {
+    font-weight: 200;
+    color: gray;
+}
+
+.contact-us {
+    background-color: #ff5b2d;
+    border-color: transparent;
+    color: honeydew;
+    font-family: Calibri, Helvetica, sans-serif;
+    padding: 10px;
+}
+
+.about-head {
+    padding: 50px 135px;
+}
+
+.about-head p {
+    color: gray;
+}
+
+.about {
+    display: flex;
+    padding-left: 135px;
+    margin: auto;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.about-text{
+    color: #1B1D1F;
+    font-weight: 400;
+}
+
+.about-item-title{
+    color: #1B1D1F;
+    text-align: center;
+    font-weight: 600;
+}
+
+.about-item-descr{
+    color: #1B1D1F;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: gray;
+}
+
+.about-item{
+    flex: 1 1 100px;
+    max-width: 45%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin-right: 135px;
+}
+
+.about-item img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.journal {
+    display: flex;
+    padding: 50px 135px;
+    flex-flow: row wrap;
+    align-items: center;
+    flex: 1 1 100px;
+
+}
+
+.journal-head p {
+    color: gray;
+}
+
+.journal-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 50%;
+    padding: 20px;
+    flex: 1 1 100px;
+}
+
+.journal-item img {
+    width: 250px;
+}
+
+.journal-date {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+}
+
+.journal-item-text {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    font-size: 12px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #29292c;
+    height: 200px;
+    color: gray;
+}
+
+.footer-images img {
+    width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+#menu-toggle {
+    opacity: 0;
+}
+.menu-btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+}
+.menu-btn > span::before {
+    content: '';
+    top: -8px;
+}
+.menu-btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu-box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: #ECEFF1;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 24px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.menu-item:hover {
+    background-color: #CFD8DC;
+}
+
+#menu-toggle:checked ~ .menu-box {
+    visibility: visible;
+    left: 0;
+}
+
