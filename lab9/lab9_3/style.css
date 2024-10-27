@@ -1,0 +1,56 @@
+body {
+    display: grid;
+    grid-template-areas:
+    "header header header"
+    "nav article ads"
+    "nav footer footer";
+    grid-template-rows: 80px 1fr 70px;
+    grid-template-columns: 20% 1fr 15%;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    height: 100vh;
+    margin: 0;
+}
+header, footer, article, nav, div {
+    padding: 1.2em;
+    background: gold;
+}
+#pageHeader {
+    grid-area: header;
+}
+#pageFooter {
+    grid-area: footer;
+}
+#mainArticle {
+    grid-area: article;
+}
+#mainNav {
+    grid-area: nav;
+}
+#siteAds {
+    grid-area: ads;
+}
+
+@media all and (max-width: 575px) {
+    body {
+        grid-template-areas:
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+        grid-template-rows: 80px 1fr 70px 1fr 70px;
+        grid-template-columns: 1fr;
+    }
+}
+a {
+    display: flex;
+    text-decoration: none;
+    background-color: #00ffea;
+    border: 2px solid #00ffea;
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
