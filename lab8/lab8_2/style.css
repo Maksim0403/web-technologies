@@ -3,6 +3,15 @@ body {
 
 }
 
+nav a {
+    display: flex;
+    color: honeydew;
+    border-radius: 5px;
+    padding-right: 110px;
+    width: 100%;
+    align-items: center;
+}
+
 header {
     overflow: hidden;
     padding-bottom: 20px;
@@ -56,8 +65,7 @@ ul li {
 ul li a {
     text-decoration: none;
     padding: 10px 20px;
-    background-color: #ff5b2d;
-    color: honeydew;
+    color: black;
     border-radius: 5px;
 }
 li img {
