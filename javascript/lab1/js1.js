@@ -1,4 +1,4 @@
-let studentName = document.querySelectorAll("ul li");
+let studentName = document.querySelectorAll("ul li button");
 
 let button = document.getElementById("show-btn");
 

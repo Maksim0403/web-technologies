@@ -19,6 +19,7 @@ console.log(findMinAndMax(array));
 
 //1.2
 console.log("----1.2----");
+
 function compareTwoObjects(obj1, obj2) {
     for (let i in obj1) {
         if (obj1[i] !== obj2[i]) {
@@ -68,12 +69,12 @@ console.log(isTrue);
 //3.1
 console.log("----3.1----");
 
-function convertMarkIntoWord (mark) {
+function convertMarkIntoWord(mark) {
     if (mark >= 90) {
         console.log("Відмінно");
-    } else if (mark < 90 && mark >= 70) {
+    } else if (mark >= 70 && mark < 90) {
         console.log("Добре");
-    } else if (mark < 70 && mark >= 50) {
+    } else if (mark >= 50 && mark < 70) {
         console.log("Задовільно");
     } else if (mark < 50) {
         console.log("Незадовільно");
@@ -97,16 +98,12 @@ let month = 6;
 
 if (month >= 3 && month <= 5) {
     console.log("Spring");
+} else if (month >= 6 && month <= 8) {
+    console.log("Summer");
+} else if (month >= 9 && month <= 11) {
+    console.log("Autumn");
 } else {
-    if (month >= 6 && month <= 8) {
-        console.log("Summer");
-    } else {
-        if (month >= 9 && month <= 11) {
-            console.log("Autumn");
-        } else {
-            console.log("Winter");
-        }
-    }
+    console.log("Winter");
 }
 
 let month1 = 5;
