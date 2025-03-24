@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style4.css">
+
+</head>
+<body>
+<!--
+<main class="grid">
+    <div id="left-side">
+        <input type="text" id="name" style="width: 50%;">
+    </div>
+
+
+</main>
+
+<table class="calendar-table">
+    <th>
+        <tr>
+            <p>Керування магазином</p></tr>
+
+        <h1>Додавання продукту</h1>
+        <p>Назва, кількість, ціна і кнопка додати</p>
+
+        <h1>Видалення продукту через ід</h1>
+        <p>Поле для вводу ід і кнопка видалити</p>
+        <h1>Редагування продукту</h1>
+        <p>Поле для вводу ід, поля для вводу інформації</p>
+
+
+    </th>
+    <th><p>Склад продуктів</p></th>
+</table>-->
+
+<div class="view view1">
+    <h1>Керування магазином</h1>
+
+    <h1>Додавання продукту</h1>
+
+    <input type="text" id="add-name"/>
+    <input type="number" id="add-price"/>
+    <input type="number" id="add-amount"/>
+
+    <button onclick="addItem()"> Додати </button>
+
+
+    <h1>Видалення продукту</h1>
+    <input type="number" id="remove-id"/>
+    <button onclick="removeItem()"> Видалити </button>
+
+
+    <h1>Редагування продукту</h1>
+    <input type="number" id="edit-id"/>
+    <button onclick="editItem()"> Редагувати </button>
+
+    <input type="text" id="edit-name"/>
+    <input type="number" id="edit-price"/>
+    <input type="number" id="edit-amount"/>
+    <button onclick="saveItem()"> Зберегти зміни </button>
+
+
+    <h1>Пошук продукту</h1>
+    <input type="text" id="search-name"/>
+    <button onclick="searchItem()"> Шукати </button>
+     <table id="searchTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount in Storage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Dynamic Rows will be added here -->
+        </tbody>
+    </table>
+
+</div>
+<div class="view view2">
+    <h1>Товари на складі</h1>
+
+    <table id="productTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount in Storage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Dynamic Rows will be added here -->
+        </tbody>
+    </table>
+
+</div>
+
+<script src="task4.js"></script>
+</body>
+</html>
