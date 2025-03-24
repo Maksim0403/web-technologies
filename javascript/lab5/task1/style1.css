@@ -1,0 +1,39 @@
+img {
+    height: 150px;
+}
+
+button{
+    width: 140px;
+    height: 30px;
+    background-color: #00ffea;
+}
+
+.lamp.standard.on {
+    content: url('/javascript/lab5/task1/project_parts/img/lamp_on.jpg');
+}
+
+.lamp.standard.off {
+    content: url('/javascript/lab5/task1/project_parts/img/lamp_off.jpg');
+}
+
+.lamp.eco.on {
+    content: url('/javascript/lab5/task1/project_parts/img/eco_on.jpg');
+}
+
+.lamp.eco.off {
+    content: url('/javascript/lab5/task1/project_parts/img/eco.jpg');
+}
+
+.lamp.led.on {
+    content: url('/javascript/lab5/task1/project_parts/img/led_on.jpg');
+}
+
+.lamp.led.off {
+    content: url('/javascript/lab5/task1/project_parts/img/led_off.jpg');
+}
+
+
+
+.brightness-50 { filter: brightness(50%); }
+.brightness-100 { filter: brightness(100%); }
+.brightness-150 { filter: brightness(150%); }
