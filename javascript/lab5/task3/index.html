@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+
+</head>
+<body>
+<span id="clock"></span><br/>
+
+<label for="meeting-time">Timer:</label>
+
+<input type="datetime-local" id="meeting-time" name="meeting-time"/>
+<button onclick="countdownTimer()"> Start! </button>
+<span id="countdown"></span>
+<br/>
+
+<div class="calendar">
+    <div class="calendar-header">
+        <span id="month-year"></span>
+    </div>
+
+    <table class="calendar-table">
+        <thead>
+        <tr>
+            <th>Пн</th>
+            <th>Вт</th>
+            <th>Ср</th>
+            <th>Чт</th>
+            <th>Пт</th>
+            <th>Сб</th>
+            <th>Нд</th>
+        </tr>
+        </thead>
+        <tbody id="calendar-body">
+        </tbody>
+    </table>
+
+    <div style="text-align: center; margin-top: 10px;">
+        <label for="month">Місяць: </label>
+        <input type="number" id="month" value="1" min="1" max="12" style="width: 50px;">
+        <label for="year">Рік: </label>
+        <input type="number" id="year" value="2023" min="1900" style="width: 80px;">
+        <button onclick="updateCalendar()">Змінити</button>
+    </div>
+</div>
+<br/>
+
+<div>
+    <label for="birthday">Введіть свою дату народження: </label>
+    <input type="date" id="birthday">
+    <button onclick="calculateTimeToBirthday()">Обчислити час до дня народження</button>
+</div>
+
+<div id="time-to-birthday" ></div>
+
+<script src="task3.js"></script>
+</body>
+</html>
