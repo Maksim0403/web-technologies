@@ -5,18 +5,21 @@ storage.set(3, {name: "Huawei", price: 580, amountInStorage: 3});
 
 console.log(storage);
 
+let orders = new Set();
+let productHistory = new WeakMap();
+let userOrders = new WeakSet();
+let uniqueUsers = new Set(); // Додатковий Set для збереження користувачів
+
+
 populateTable(storage)
 
-// Function to populate the table
 function populateTable(map , selector = "#productTable tbody") {
     const tableBody = document.querySelector(selector);
-    tableBody.innerHTML = '';  // Clear any existing rows
+    tableBody.innerHTML = '';
 
-    // Loop through each item in the Map and create a row for it
     map.forEach((value, key) => {
         const row = document.createElement("tr");
 
-        // Create a column for each piece of information
         const idCell = document.createElement("td");
         idCell.textContent = key;
         row.appendChild(idCell);
@@ -33,7 +36,6 @@ function populateTable(map , selector = "#productTable tbody") {
         amountCell.textContent = value.amountInStorage;
         row.appendChild(amountCell);
 
-        // Append the row to the table body
         tableBody.appendChild(row);
     });
 }
@@ -113,4 +115,111 @@ function searchByName(searchName) {
     }
 
     return resultMap;
+}
+
+
+function makeOrder() {
+    let productId = parseInt(document.getElementById("order-id").value);
+    let quantity = parseInt(document.getElementById("order-amount").value);
+
+    if (!storage.has(productId)) {
+        alert("Продукт не знайдено!");
+        return;
+    }
+
+    let product = storage.get(productId);
+    if (product.amountInStorage < quantity) {
+        alert("Недостатньо товару на складі!");
+        return;
+    }
+
+    // Імітація користувача
+    let user = { name: "User" + Math.floor(Math.random() * 1000) };
+    userOrders.add(user); // Додаємо користувача в WeakSet
+    uniqueUsers.add(user.name); // Зберігаємо ім'я користувача в Set
+
+    product.amountInStorage -= quantity;
+    orders.add({ user, productId, quantity });
+
+    // Оновлення історії продукту
+    if (!productHistory.has(product)) {
+        productHistory.set(product, []);
+    }
+    productHistory.get(product).push({ user, quantity, date: new Date() });
+
+    populateTable(storage);
+    updateOrdersTable();
+    console.log(`Замовлення користувача ${user.name}: ${quantity} x ${product.name}`);
+}
+
+// Функція для виведення історії покупок товару
+function showProductHistory(productId) {
+    const historyContainer = document.getElementById("product-history");
+    historyContainer.innerHTML = ""; // Очищуємо перед виводом
+
+    if (!storage.has(productId)) {
+        historyContainer.innerHTML = "<p>Товар не знайдено.</p>";
+        return;
+    }
+
+    let product = storage.get(productId);
+    let history = productHistory.get(product) || [];
+
+    if (history.length === 0) {
+        historyContainer.innerHTML = `<p>Немає історії замовлень для ${product.name}.</p>`;
+        return;
+    }
+
+    let html = `<h3>Історія замовлень для ${product.name}:</h3><ul>`;
+    history.forEach((order, index) => {
+        html += `<li>${index + 1}) ${order.user.name} замовив ${order.quantity} шт. ${order.date.toLocaleString()}</li>`;
+    });
+    html += "</ul>";
+
+    historyContainer.innerHTML = html;
+}
+
+function showUserOrders() {
+    const usersContainer = document.getElementById("user-orders");
+    usersContainer.innerHTML = ""; // Очищуємо перед виводом
+
+    if (uniqueUsers.size === 0) {
+        usersContainer.innerHTML = "<p>Немає замовлень.</p>";
+        return;
+    }
+
+    let html = "<h3>Унікальні користувачі:</h3><ul>";
+    uniqueUsers.forEach(name => {
+        html += `<li>${name}</li>`;
+    });
+    html += "</ul>";
+
+    usersContainer.innerHTML = html;
+}
+
+function updateOrdersTable() {
+    const tableBody = document.querySelector("#ordersTable tbody");
+    tableBody.innerHTML = "";
+
+    orders.forEach(order => {
+        const row = document.createElement("tr");
+
+        const idCell = document.createElement("td");
+        idCell.textContent = order.productId;
+        row.appendChild(idCell);
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = storage.get(order.productId).name;
+        row.appendChild(nameCell);
+
+        const priceCell = document.createElement("td");
+        priceCell.textContent = storage.get(order.productId).price;
+        row.appendChild(priceCell);
+
+        const amountCell = document.createElement("td");
+        amountCell.textContent = order.quantity;
+        row.appendChild(amountCell);
+
+        tableBody.appendChild(row);
+    });
 }

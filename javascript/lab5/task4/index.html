@@ -2,42 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Task 4</title>
     <link rel="stylesheet" href="style4.css">
 
 </head>
 <body>
-<!--
-<main class="grid">
-    <div id="left-side">
-        <input type="text" id="name" style="width: 50%;">
-    </div>
-
-
-</main>
-
-<table class="calendar-table">
-    <th>
-        <tr>
-            <p>Керування магазином</p></tr>
-
-        <h1>Додавання продукту</h1>
-        <p>Назва, кількість, ціна і кнопка додати</p>
-
-        <h1>Видалення продукту через ід</h1>
-        <p>Поле для вводу ід і кнопка видалити</p>
-        <h1>Редагування продукту</h1>
-        <p>Поле для вводу ід, поля для вводу інформації</p>
-
-
-    </th>
-    <th><p>Склад продуктів</p></th>
-</table>-->
 
 <div class="view view1">
     <h1>Керування магазином</h1>
 
-    <h1>Додавання продукту</h1>
+    <p>Додавання продукту</p>
 
     <input type="text" id="add-name"/>
     <input type="number" id="add-price"/>
@@ -46,14 +20,15 @@
     <button onclick="addItem()"> Додати </button>
 
 
-    <h1>Видалення продукту</h1>
+    <p>Видалення продукту</p>
     <input type="number" id="remove-id"/>
     <button onclick="removeItem()"> Видалити </button>
 
 
-    <h1>Редагування продукту</h1>
+    <p>Редагування продукту</p>
     <input type="number" id="edit-id"/>
     <button onclick="editItem()"> Редагувати </button>
+    <br/>
 
     <input type="text" id="edit-name"/>
     <input type="number" id="edit-price"/>
@@ -61,7 +36,7 @@
     <button onclick="saveItem()"> Зберегти зміни </button>
 
 
-    <h1>Пошук продукту</h1>
+    <p>Пошук продукту за назвою</p>
     <input type="text" id="search-name"/>
     <button onclick="searchItem()"> Шукати </button>
      <table id="searchTable">
@@ -74,9 +49,39 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Dynamic Rows will be added here -->
         </tbody>
     </table>
+
+    <p>Замовлення</p>
+    <input type="number" id="order-id" placeholder="ID продукту"/>
+    <input type="number" id="order-amount" placeholder="Кількість"/>
+    <button onclick="makeOrder()">Замовити</button>
+
+    <table id="ordersTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Назва</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <p>Історія замовлень продукту</p>
+    <input type="number" id="history-id" placeholder="ID продукту"/>
+    <button onclick="showProductHistory(parseInt(document.getElementById('history-id').value))">Показати історію</button>
+    <div id="product-history"></div>
+
+    <p>Унікальні користувачі, які зробили замовлення</p>
+    <button onclick="showUserOrders()">Показати користувачів</button>
+    <div id="user-orders"></div>
+
+</div>
+
+
 
 </div>
 <div class="view view2">
@@ -92,7 +97,6 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Dynamic Rows will be added here -->
         </tbody>
     </table>
 
