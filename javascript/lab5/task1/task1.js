@@ -22,7 +22,7 @@ toggleBtn.addEventListener('click', function() {
             isOn = false;
             toggleBtn.textContent = "OFF";
             updateLampClass();
-        }, 5000);
+        }, 300000/*5000*/);
 });
 
 lampType.addEventListener('change', function() {
@@ -48,9 +48,4 @@ brightnessBtn.addEventListener('click', function() {
 
     lamp.style.filter = `brightness(${brightnessValue}%)`;
 
-    clearTimeout(timerID);
-    timerID = setTimeout(function () {
-        isOn = false;
-        toggleBtn.textContent = "OFF";
-        updateLampClass();
-    }, 5000);});
+    });
