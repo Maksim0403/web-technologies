@@ -58,6 +58,8 @@ function changeColor() {
 }
 
 let manualStateIndex = 0;
+let blinkingInterval = null;
+
 
 function manualSwitch() {
     let red = document.querySelector('#red');
@@ -65,27 +67,36 @@ function manualSwitch() {
     let green = document.querySelector('#green');
     let statusText = document.querySelector('#status');
 
+    if (blinkingInterval) {
+        clearInterval(blinkingInterval);
+        blinkingInterval = null;
+    }
+
     switch (manualStateIndex) {
         case 0:
             red.style.opacity = 1;
             yellow.style.opacity = 0.3;
             green.style.opacity = 0.3;
             statusText.textContent = "Current State: Red";
+            manualStateIndex = 1;
             break;
         case 1:
             yellow.style.opacity = 1;
             red.style.opacity = 0.3;
             green.style.opacity = 0.3;
             statusText.textContent = "Current State: Yellow";
+            manualStateIndex = 2;
             break;
         case 2:
             yellow.style.opacity = 0.3;
             green.style.opacity = 1;
+            red.style.opacity = 0.3;
             statusText.textContent = "Current State: Green";
+            manualStateIndex = 3;
             break;
         case 3:
             let count = 0;
-            let intervalID = setInterval(function () {
+            blinkingInterval = setInterval(function () {
                 if (count < 6) {
                     yellow.style.opacity = yellow.style.opacity === "1" ? "0.3" : "1";
                     green.style.opacity = 0.3;
@@ -93,11 +104,16 @@ function manualSwitch() {
                     statusText.textContent = "Current State: Yellow (Blinking)";
                     count++;
                 } else {
-                    clearInterval(intervalID);
+                    clearInterval(blinkingInterval);
+                    blinkingInterval = null;
+
+                    red.style.opacity = 1;
+                    yellow.style.opacity = 0.3;
+                    green.style.opacity = 0.3;
+                    statusText.textContent = "Current State: Red";
+                    manualStateIndex = 1;
                 }
             }, 500);
             break;
     }
-
-    manualStateIndex = (manualStateIndex + 1) % 4;
 }
