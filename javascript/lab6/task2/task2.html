@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Простий список завдань</title>
+  <link rel="stylesheet" href="task2.css">
+</head>
+<body>
+<h1>Мій список завдань</h1>
+
+<div class="input-container">
+  <input type="text" id="taskInput" placeholder="Введіть нове завдання..." minlength="3" required>
+  <button id="addButton">Додати</button>
+</div>
+
+<div class="sort-buttons">
+  <button class="sort-button active" data-sort="date">За датою</button>
+  <button class="sort-button" data-sort="status">За статусом</button>
+  <button class="sort-button" data-sort="update">За оновленням</button>
+</div>
+
+<ul id="taskList"></ul>
+
+<script src="task2.js"></script>
+</body>
+</html>
