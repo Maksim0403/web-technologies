@@ -1,58 +1,3 @@
-const now = getCurrentDate();
-
-//variables
-let products = [{
-    id: 1,
-    name: "Samsung",
-    price: 950,
-    category: "Smartphones",
-    image: "/javascript/lab6/task1/project_parts/img/samsung_23.webp",
-    createdAt: new Date('2025-04-02'),
-    updatedAt: now
-}, {
-    id: 2,
-    name: "Lenovo Legion 5",
-    price: 1200,
-    category: "Laptops",
-    image: "/javascript/lab6/task1/project_parts/img/lenovo.jpg",
-    createdAt: new Date('2025-04-01'),
-    updatedAt: now
-}];
-
-let modal = document.getElementById("myModal");
-
-let editModal = document.getElementById("editModal")
-
-let span = document.getElementsByClassName("close")[0];
-
-let editSpan = document.getElementsByClassName("edit-close")[0];
-
-
-const container = document.getElementById('productList');
-
-const initializeApp = () => {
-    container.innerHTML = "";
-
-    if (products.length === 0) {
-        const emptyMessage = document.createElement('div');
-        emptyMessage.className = 'empty-message';
-        emptyMessage.textContent = "Наразі список товарів пустий. Додайте новий товар.";
-        container.appendChild(emptyMessage);
-    } else {
-        products.forEach(product => {
-            container.appendChild(createProductCard(product));
-        });
-    }
-
-    updateTotalAmount();
-}
-
-function generateId(productsArray) {
-    if (productsArray.length === 0) return 1;
-    const maxId = Math.max(...productsArray.map(p => p.id));
-    return maxId + 1;
-}
-
 function getCurrentDate() {
     const now = new Date();
     const date = now.toLocaleDateString("uk-UA");
@@ -63,173 +8,39 @@ function getCurrentDate() {
     return `${date}, ${time}`;
 }
 
-//add product
-function addProduct() {
-    const id = generateId();
-    const name = document.getElementById('name').value.trim();
-    const price = parseFloat(document.getElementById('price').value);
-    const category = document.getElementById('category').value.trim();
-    const image = document.getElementById('image').value.trim();
+let products = [{
+    id: 1,
+    name: "Samsung",
+    price: 950,
+    category: "Smartphones",
+    image: "/javascript/lab6/task1/project_parts/img/samsung_23.webp",
+    createdAt: new Date('2025-04-02'),
+    updatedAt: getCurrentDate()
+}, {
+    id: 2,
+    name: "Lenovo Legion 5",
+    price: 1200,
+    category: "Laptops",
+    image: "/javascript/lab6/task1/project_parts/img/lenovo.jpg",
+    createdAt: new Date('2025-04-01'),
+    updatedAt: getCurrentDate()
+}];
 
-    if (!name || isNaN(price) || !category || !image) {
-        alert('Please fill all fields correctly.');
-        return;
+let modal = document.getElementById("myModal");
+let editModal = document.getElementById("editModal");
+let span = document.getElementsByClassName("close")[0];
+let editSpan = document.getElementsByClassName("edit-close")[0];
+const container = document.getElementById('productList');
 
-    }
-
-    const newProduct = {
-        id,
-        name,
-        price,
-        category,
-        image,
-        createdAt: now,
-        updatedAt: now
-    };
-    products.push(newProduct);
-
-    initializeApp();
-
-    document.getElementById('name').value = '';
-    document.getElementById('price').value = '';
-    document.getElementById('category').value = '';
-
-    document.getElementById('image').value = '';
-    modal.style.display = "none";
-
+function generateId() {
+    return Math.floor(Math.random() * 1000000);
 }
 
-const updateTotalAmount = () => {
-    const totalAmount = document.getElementById("totalAmount")
-    let total = products.reduce((sum, product) => sum + product.price, 0);
-
-    totalAmount.textContent = `Total: $${total}`;
-}
-
-//update
-function updateProducts() {
-    const id = parseInt(document.getElementById("editId").textContent); // або innerText
-    const name = document.getElementById('editName').value.trim();
-    const price = parseFloat(document.getElementById('editPrice').value);
-    const category = document.getElementById('editCategory').value.trim();
-    const image = document.getElementById('editImage').value.trim();
-
-    if (!name || isNaN(price) || !category || !image) {
-        alert('Please fill all fields correctly.');
-        return;
-    }
-
-    let updatedAt = null;
-    let productUpdated = false;
-
-    products = products.map(product => {
-        if (product.id === id) {
-            if (product.name !== name || product.price !== price || product.category !== category || product.image !== image) {
-                updatedAt = new Date().toISOString();
-                productUpdated = true;
-            }
-
-            return {
-                ...product,
-                name,
-                price,
-                category,
-                image,
-                updatedAt: updatedAt || product.updatedAt,
-            };
-        }
-        return product;
-    });
-
-    const productCard = document.querySelector(`.product-card[data-id='${id}']`);
-    if (productCard) {
-        productCard.querySelector('.product-name').textContent = name;
-        productCard.querySelector('.product-price').textContent = `Total: $${price}`;
-        productCard.querySelector('.product-category').textContent = category;
-        productCard.querySelector('.product-image').src = image;
-    }
-    if (productUpdated) {
-        const updatedAtElement = productCard.querySelector('.product-updated');
-        if (updatedAtElement) {
-            updatedAtElement.textContent = `Оновлено: ${new Date(updatedAt).toLocaleString("uk-UA", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
-            })}`;
-        }
-    }
-    editModal.style.display = "none";
-
-    updateTotalAmount();
-
-    let editSnackbar = document.getElementById("edit-snackbar");
-    editSnackbar.textContent = `Product {ID: ${id}, "${name}" was updated successfully`;
-
-    editSnackbar.className = "show";
-
-    setTimeout(function () {
-        editSnackbar.className = editSnackbar.className.replace("show", "");
-    }, 3000);
-}
-
-//delete
-function deleteProductWithAnimation(productId) {
-    const productToDelete = products.find(product => product.id === productId);
-    if (!productToDelete) return null;
-
-    const productCard = document.querySelector(`.product-card[data-id='${productId}']`);
-    if (productCard) {
-        productCard.classList.add('fade-out');
-
-        setTimeout(() => {
-            products = products.filter(product => product.id !== productId);
-            container.innerHTML = "";
-            initializeApp();
-
-            let deleteSnackbar = document.getElementById("delete-snackbar");
-            deleteSnackbar.className = "show";
-
-            setTimeout(function () {
-                deleteSnackbar.className = deleteSnackbar.className.replace("show", "");
-            }, 3000);
-        }, 500);
-    } else {
-        products = products.filter(product => product.id !== productId);
-        container.innerHTML = "";
-        initializeApp();
-    }
-}
-
-document.querySelectorAll('.filter-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        filterProducts(category);
-    });
-});
-
-function filterProducts(category) {
-    document.querySelectorAll('.product-card').forEach(card => {
-        const productCategory = card.querySelector('.product-category').textContent;
-
-        if (category === "All" || productCategory === category) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-
-const createProductCard = (product) => {
+function createProductCard(product) {
     const div = document.createElement('div');
     div.id = `product-${product.id}`;
-
     div.className = 'product-card';
     div.dataset.id = product.id;
-    div.textContent = product;
-
-    let price = `Total: $${product.price}`;
 
     const createdAt = new Date(product.createdAt).toLocaleString("uk-UA", {
         day: "2-digit",
@@ -252,7 +63,7 @@ const createProductCard = (product) => {
         <div class="product-info">
             <div class="product-id">ID: ${product.id}</div>
             <h3 class="product-name">${product.name}</h3>
-            <div class="product-price">${price} </div>
+            <div class="product-price">Total: $${product.price}</div>
             <div class="product-category">${product.category}</div>
             <div class="product-created">Створено: ${createdAt}</div>
             <div class="product-updated">Оновлено: ${updatedAt}</div>    
@@ -275,19 +86,242 @@ const createProductCard = (product) => {
     });
 
     return div;
-};
+}
 
+function calculateTotalAmount(productsList) {
+    return productsList.reduce((sum, product) => sum + product.price, 0);
+}
+
+function getSortedProducts(productsList, sortBy) {
+    return [...productsList].sort((a, b) => {
+        if (sortBy === "price") {
+            return a.price - b.price;
+        } else if (sortBy === "createdAt" || sortBy === "updatedAt") {
+            return new Date(a[sortBy]) - new Date(b[sortBy]);
+        }
+        return 0;
+    });
+}
+
+function createNewProduct(name, price, category, image) {
+    const now = new Date().toISOString();
+    return {
+        id: generateId(),
+        name,
+        price,
+        category,
+        image,
+        createdAt: now,
+        updatedAt: now
+    };
+}
+
+function getUpdatedProduct(productsList, id, name, price, category, image) {
+    const now = new Date().toISOString();
+    return productsList.map(product => {
+        if (product.id === id) {
+            return { ...product, name, price, category, image, updatedAt: now };
+        }
+        return product;
+    });
+}
+
+function getProductsWithoutDeleted(productsList, id) {
+    return productsList.filter(product => product.id !== id);
+}
+
+function updateProductsState(newProducts) {
+    products = newProducts;
+    renderProductList(products);
+    updateTotalAmountUI(calculateTotalAmount(products));
+}
+
+function renderProductList(productsList) {
+    container.innerHTML = "";
+
+    if (productsList.length === 0) {
+        const emptyMessage = document.createElement('div');
+        emptyMessage.className = 'empty-message';
+        emptyMessage.textContent = "Наразі список товарів пустий. Додайте новий товар.";
+        container.appendChild(emptyMessage);
+    } else {
+        productsList.forEach(product => {
+            container.appendChild(createProductCard(product));
+        });
+    }
+}
+
+function updateTotalAmountUI(total) {
+    const totalAmount = document.getElementById("totalAmount");
+    totalAmount.textContent = `Total: $${total}`;
+}
+
+function showValidationError(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'validation-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = 'red';
+    errorDiv.style.marginBottom = '10px';
+
+    const form = document.querySelector('.modal-content:not([style*="none"])') ||
+        document.querySelector('.edit-modal-content:not([style*="none"])');
+
+    if (!form) return;
+
+    const existingError = form.querySelector('.validation-error');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    const firstFormElement = form.querySelector('.form-group');
+    if (firstFormElement) {
+        form.insertBefore(errorDiv, firstFormElement);
+    }
+}
+
+function initializeApp() {
+    renderProductList(products);
+    updateTotalAmountUI(calculateTotalAmount(products));
+
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            filterProducts(category);
+        });
+    });
+
+    document.querySelectorAll('.sort-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const sortBy = button.getAttribute('data-sort');
+            sortProducts(sortBy);
+        });
+    });
+
+    document.getElementById('resetSort').addEventListener('click', () => {
+        resetSort();
+    });
+
+    // Налаштування обробників для модальних вікон
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    editSpan.onclick = function() {
+        editModal.style.display = "none";
+    };
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        if (event.target === editModal) {
+            editModal.style.display = "none";
+        }
+    };
+}
+
+function addProduct() {
+    const name = document.getElementById('name').value.trim();
+    const price = parseFloat(document.getElementById('price').value);
+    const category = document.getElementById('category').value.trim();
+    const image = document.getElementById('image').value.trim();
+
+    if (!name || isNaN(price) || !category || !image) {
+        showValidationError('Please fill all fields correctly.');
+        return;
+    }
+
+    const newProduct = createNewProduct(name, price, category, image);
+    const newProducts = [...products, newProduct];
+
+    document.getElementById('name').value = '';
+    document.getElementById('price').value = '';
+    document.getElementById('category').value = '';
+    document.getElementById('image').value = '';
+
+    updateProductsState(newProducts);
+    modal.style.display = "none";
+}
+
+function updateProducts() {
+    const id = parseInt(document.getElementById("editId").textContent);
+    const name = document.getElementById('editName').value.trim();
+    const price = parseFloat(document.getElementById('editPrice').value);
+    const category = document.getElementById('editCategory').value.trim();
+    const image = document.getElementById('editImage').value.trim();
+
+    if (!name || isNaN(price) || !category || !image) {
+        showValidationError('Please fill all fields correctly.');
+        return;
+    }
+
+    const updatedProducts = getUpdatedProduct(products, id, name, price, category, image);
+    updateProductsState(updatedProducts);
+    editModal.style.display = "none";
+
+    let editSnackbar = document.getElementById("edit-snackbar");
+    editSnackbar.textContent = `Product (ID: ${id}, "${name}") was updated successfully`;
+    editSnackbar.className = "show";
+
+    setTimeout(() => {
+        editSnackbar.className = editSnackbar.className.replace("show", "");
+    }, 3000);
+}
+
+function deleteProductWithAnimation(productId) {
+    const productCard = document.querySelector(`.product-card[data-id='${productId}']`);
+
+    if (productCard) {
+        productCard.classList.add('fade-out');
+        setTimeout(() => {
+            const newProducts = getProductsWithoutDeleted(products, productId);
+            updateProductsState(newProducts);
+
+            let deleteSnackbar = document.getElementById("delete-snackbar");
+            deleteSnackbar.className = "show";
+
+            setTimeout(() => {
+                deleteSnackbar.className = deleteSnackbar.className.replace("show", "");
+            }, 3000);
+        }, 500);
+    } else {
+        const newProducts = getProductsWithoutDeleted(products, productId);
+        updateProductsState(newProducts);
+    }
+}
+
+function filterProducts(category) {
+    document.querySelectorAll('.product-card').forEach(card => {
+        const productCategory = card.querySelector('.product-category').textContent;
+
+        if (category === "All" || productCategory === category) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function sortProducts(sortBy) {
+    const sortedProducts = getSortedProducts(products, sortBy);
+    updateProductsState(sortedProducts);
+}
+
+function resetSort() {
+    const resetProducts = [...products].sort((a, b) => a.id - b.id);
+    updateProductsState(resetProducts);
+}
 
 function openProductCreation() {
     modal.style.display = "block";
 }
 
 function openEditProduct(productId) {
-    editModal.style.display = "block";
-
     const productToUpdate = products.find(product => product.id === productId);
 
     if (!productToUpdate) return;
+
+    editModal.style.display = "block";
 
     document.getElementById('editId').textContent = productToUpdate.id;
     document.getElementById('editName').value = productToUpdate.name;
@@ -296,51 +330,4 @@ function openEditProduct(productId) {
     document.getElementById('editImage').value = productToUpdate.image;
 }
 
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-editSpan.onclick = function () {
-    editModal.style.display = "none";
-}
-
-
-window.onclick = function (event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-    if (event.target === editModal) {
-        editModal.style.display = "none";
-    }
-
-}
-
-initializeApp()
-
-document.querySelectorAll('.sort-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const sortBy = button.getAttribute('data-sort');
-        sortProducts(sortBy);
-    });
-});
-
-document.getElementById('resetSort').addEventListener('click', () => {
-    resetSort();
-});
-
-function sortProducts(sortBy) {
-    products.sort((a, b) => {
-        if (sortBy === "price") {
-            return a.price - b.price;
-        } else if (sortBy === "createdAt" || sortBy === "updatedAt") {
-            return new Date(a[sortBy]) - new Date(b[sortBy]);
-        }
-        return 0;
-    });
-    initializeApp();
-}
-
-function resetSort() {
-    products.sort((a, b) => a.id - b.id);
-    initializeApp();
-}
+initializeApp();

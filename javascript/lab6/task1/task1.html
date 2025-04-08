@@ -6,93 +6,97 @@
     <link rel="stylesheet" href="task1.css">
 </head>
 <body>
-<h1>Welcome</h1>
-<div id="filter-buttons">
-    <button class="filter-btn" data-category="All">All</button>
-    <button class="filter-btn" data-category="Smartphones">Smartphones</button>
-    <button class="filter-btn" data-category="Laptops">Laptops</button>
-    <button class="filter-btn" data-category="Tablets">Tablets</button>
-</div>
 
-<div id="sortButtons">
-    <button class="sort-btn" data-sort="price">Сортувати за ціною</button>
-    <button class="sort-btn" data-sort="createdAt">Сортувати за датою створення</button>
-    <button class="sort-btn" data-sort="updatedAt">Сортувати за датою оновлення</button>
-    <button id="resetSort">Скинути сортування</button>
-</div>
+<header>
+    <h1>Welcome</h1>
+</header>
 
+<main>
+    <section id="filter-buttons">
+        <button class="filter-btn" data-category="All">All</button>
+        <button class="filter-btn" data-category="Smartphones">Smartphones</button>
+        <button class="filter-btn" data-category="Laptops">Laptops</button>
+        <button class="filter-btn" data-category="Tablets">Tablets</button>
+    </section>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Add New Product</h2>
-        <div id="addProductForm">
-            <div class="form-group">
-                <label>Name:</label>
-                <input type="text" id="name">
+    <section id="sortButtons">
+        <button class="sort-btn" data-sort="price">Сортувати за ціною</button>
+        <button class="sort-btn" data-sort="createdAt">Сортувати за датою створення</button>
+        <button class="sort-btn" data-sort="updatedAt">Сортувати за датою оновлення</button>
+        <button id="resetSort">Скинути сортування</button>
+    </section>
+
+    <section id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Product</h2>
+            <div id="addProductForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required minlength="3" placeholder="Enter product name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price ($):</label>
+                    <input type="number" id="price" name="price" required min="1" step="any" placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" required minlength="3" placeholder="Enter product category">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL or Path:</label>
+                    <input type="url" id="image" name="image" required placeholder="Enter image URL">
+                </div>
+                <button onclick="addProduct()">Add Product</button>
             </div>
-            <div class="form-group">
-                <label>Price ($):</label>
-                <input type="number" id="price">
-            </div>
-            <div class="form-group">
-                <label>Category:</label>
-                <input type="text" id="category">
-            </div>
-            <div class="form-group">
-                <label>Image URL or Path:</label>
-                <input type="text" id="image">
-            </div>
-            <button onclick="addProduct()">Add Product</button>
         </div>
-    </div>
-</div>
+    </section>
 
-<div id="editModal" class="modal">
-    <!-- Modal content -->
-    <div class="edit-modal-content">
-        <span class="edit-close">&times;</span>
-        <h2>Edit Product</h2>
-        <div id="editProductForm">
-            <div class="form-group">
-                <label>ID:</label>
-                <label id="editId"></label>
+    <section id="editModal" class="modal">
+        <div class="edit-modal-content">
+            <span class="edit-close">&times;</span>
+            <h2>Edit Product</h2>
+            <div id="editProductForm">
+                <div class="form-group">
+                    <label for="editId">ID:</label>
+                    <label id="editId"></label>
+                </div>
+                <div class="form-group">
+                    <label for="editName">Name:</label>
+                    <input type="text" id="editName" name="editName" required minlength="3" placeholder="Enter product name">
+                </div>
+                <div class="form-group">
+                    <label for="editPrice">Price ($):</label>
+                    <input type="number" id="editPrice" name="editPrice" required min="1" step="any" placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">Category:</label>
+                    <input type="text" id="editCategory" name="editCategory" required minlength="3" placeholder="Enter product category">
+                </div>
+                <div class="form-group">
+                    <label for="editImage">Image URL or Path:</label>
+                    <input type="url" id="editImage" name="editImage" required placeholder="Enter image URL">
+                </div>
+                <button onclick="updateProducts()">Update Product</button>
             </div>
-            <div class="form-group">
-                <label>Name:</label>
-                <input type="text" id="editName">
-            </div>
-            <div class="form-group">
-                <label>Price ($):</label>
-                <input type="number" id="editPrice">
-            </div>
-            <div class="form-group">
-                <label>Category:</label>
-                <input type="text" id="editCategory">
-            </div>
-            <div class="form-group">
-                <label>Image URL or Path:</label>
-                <input type="text" id="editImage">
-            </div>
-            <button onclick="updateProducts()">Update Product</button>
         </div>
-    </div>
-</div>
+    </section>
 
-<div id="delete-snackbar">Product was deleted successfully </div>
-<div id="edit-snackbar"></div>
+    <section id="delete-snackbar">Product was deleted successfully</section>
+    <section id="edit-snackbar"></section>
 
+    <section id="productList" class="product-container">
+    </section>
 
-<div id="productList" class="product-container">
-</div>
+    <section class="add-product-container">
+        <button id="addProductBtn" onclick="openProductCreation()" class="add-product-btn">Додати новий товар</button>
+    </section>
+</main>
 
-<div class="add-product-container">
-    <button id="addProductBtn" onclick="openProductCreation()" class="add-product-btn">Додати новий товар</button>
-</div>
-
-<h3 id="totalAmount">Total amount : </h3>
+<footer>
+    <section id="totalAmount">
+        <h3>Total amount:</h3>
+    </section></footer>
 
 <script src="task1.js"></script>
 </body>
