@@ -309,26 +309,37 @@ body {
 /*                              Gunman style                                 */
 .gunman {
     position: absolute;
-    bottom: 85px;
-    left: 800px;
+    bottom: 120px;
+    left: 700px;
     z-index: 900;
 
-    width: 35px; /* width of one frame */
+    width: 33px; /* width of one frame */
     height: 70px; /* height of one frame */
+    transform: scale(4);
+    animation: gunman-level-1__walk 3s steps(5) ;
 }
 
 .gunman-level-1 {
     background: url(/javascript/lab7-gunman-game/project_parts/img/gunman.png) 0 0;
 }
 
-.gunman-level-1__walking {
-    animation: gunman-level-1__walk 1s steps(3);
-    background-position: -130px 0;
-
-    left: 340px;
-    transform: scale(4); /* Zooms in 2x */
-
+.gunman-level-1-w {
+    background: url(/javascript/lab7-gunman-game/project_parts/img/gunman_walk_1.png);
 }
+
+.gunman-frame-2 {
+    background: url(/javascript/lab7-gunman-game/project_parts/img/gunman_walk_2.png) ;
+}
+
+.gunman-frame-3 {
+    background: url(/javascript/lab7-gunman-game/project_parts/img/gunman_walk_3.png) no-repeat;
+}
+
+
+
+/*.gunman-level-1__walking {
+    animation: gunman-level-1__walk 1s steps(3);
+}*/
 
 .gunman-level-1__standing {
     background-position: -400px 0;
@@ -355,10 +366,10 @@ body {
 
 @keyframes gunman-level-1__walk {
     from {
-        background-position: 0 0;
+        left: 700px;
     }
     to {
-        background-position: -390px 0;
+        left: 5px;
     }
 }
 
