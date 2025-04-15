@@ -20,8 +20,8 @@
         </div>
         <div class="white-line"></div>
         <div class="time-panel">
-            <div class="time-panel__gunman">0.00</div>
             <div class="time-panel__you">0.00</div>
+            <div class="time-panel__gunman">0.00</div>
         </div>
         <div class="score-panel">
             <div class="score-panel__score">Score:<span class="score-panel__score_num">0</span></div>
@@ -43,9 +43,20 @@
 
 <section class="win-screen">
     <h2 class="win-screen__title">You have won the game!</h2>
+    <div class="final-score">Your Score: <span id="final-score">0</span></div>
+    <button class="button button-restart win-restart">Restart Game</button>
 </section>
 <!-- Game win screen -->
 
+<!-- Audio files -->
+<audio id="sfx-intro" src="/javascript/lab7-gunman-game/project_parts/sfx/intro.m4a"></audio>
+<audio id="sfx-fire" src="/javascript/lab7-gunman-game/project_parts/sfx/fire.m4a"></audio>
+<audio id="sfx-death" src="/javascript/lab7-gunman-game/project_parts/sfx/death.m4a"></audio>
+<audio id="sfx-win" src="/javascript/lab7-gunman-game/project_parts/sfx/win.m4a"></audio>
+<audio id="sfx-shot" src="/javascript/lab7-gunman-game/project_parts/sfx/shot.m4a"></audio>
+<audio id="sfx-shot-fall" src="/javascript/lab7-gunman-game/project_parts/sfx/shot-fall.m4a"></audio>
+<audio id="sfx-wait" src="/javascript/lab7-gunman-game/project_parts/sfx/wait.m4a"></audio>
+<audio id="sfx-foul" src="/javascript/lab7-gunman-game/project_parts/sfx/foul.m4a"></audio>
 
 
 <script src="script.js"></script>

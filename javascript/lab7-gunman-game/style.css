@@ -2,6 +2,7 @@
 body {
     background: #000;
     font-family: "PressStart2P";
+
 }
 
 
@@ -64,7 +65,11 @@ body {
     top: 90%;
     z-index: 1001;
 }
-
+.win-restart{
+    display: block;
+    top: 90%;
+    z-index: 1001;
+}
 .button-next-level {
     display: none;
     top: 90%;
@@ -96,6 +101,7 @@ body {
     width: 900px;
 
     box-sizing: border-box;
+
 }
 
 .game-screen {
@@ -114,6 +120,9 @@ body {
 
     background: url(/javascript/lab7-gunman-game/project_parts/img/bg.png) no-repeat;
     background-size: cover;
+    cursor: crosshair;
+
+
 }
 
 /*                              End Main game screen style                   */
@@ -286,7 +295,7 @@ body {
     width: 800px;
     height: 480px;
 
-    background: url(/javascript/lab7-gunman-game/project_parts/img/main-background.png) no-repeat;
+    background: url(/javascript/lab7-gunman-game/project_parts/img/win-bg.png) no-repeat;
 }
 
 .win-screen__title {
@@ -304,123 +313,217 @@ body {
     text-align: center;
 }
 
+.final-score{
+    font-size: 50px;
+    line-height: 70px;
+    text-transform: uppercase;
+    text-align: center;
+}
 /*                              End Game win screen style                    */
 
 /*                              Gunman style                                 */
+
 .gunman {
     position: absolute;
-    bottom: 120px;
-    left: 700px; /* starting position on the right */
+    bottom: 140px;
+    left: 700px;
     width: 33px;
-    height: 70px;
-    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman-1-walk.gif);
+    height: 83px;
     background-repeat: no-repeat;
-    background-size: cover;
     transform: scale(4);
+    background-image: url("/javascript/lab7-gunman-game/project_parts/img/gunman.png");
     z-index: 10;
 }
-/* WALK TO CENTER */
+
+.gunman-level-1 {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_1_walk.gif);
+    width: 33px;
+    height: 70px;
+}
+
+.gunman-level-1.standing, .gunman-level-1.ready {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_stay.gif);
+    left: 380px;
+    width: 33px;
+    height: 70px;
+}
+
+.gunman-level-1.shooting {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_1_duel.gif);
+    left: 348px;
+    width: 33px;
+    height: 70px;
+
+}
+
+.gunman-level-1.dead {
+    display: block;
+    position: absolute;
+    top: 250px;
+    left: 380px;
+    width: 33px;
+    height: 75px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_1_death.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: gunmanDeath 20s steps(4) forwards;
+}
+
+
+.gunman-level-2 {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_2_walk.gif);
+}
+
+.gunman-level-2.standing, .gunman-level-2.ready {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_2_stay.png);
+    left: 380px;
+
+}
+
+.gunman-level-2.shooting {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_2_duel.gif);
+    left: 380px;
+
+}
+
+.gunman-level-2.dead {
+    display: block;
+    position: absolute;
+    top: 250px;
+    left: 380px;
+    width: 33px;
+    height: 90px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_2_death.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: gunmanDeath 20s steps(4) forwards;
+
+}
+
+.gunman-level-3 {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_3_walk.gif);
+    width: 30px;
+    height: 85px;
+}
+
+.gunman-level-3.standing, .gunman-level-3.ready {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_3_stay.png);
+    left: 380px;
+    width: 30px;
+    height: 90px;
+
+}
+
+.gunman-level-3.shooting {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_3_duel.gif);
+    left: 380px;
+    width: 30px;
+    height: 85px;
+}
+
+.gunman-level-3.dead {
+    display: block;
+    position: absolute;
+    top: 220px;
+    left: 380px;
+    width: 60px;
+    height: 95px;
+    bottom: 180px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_3_death.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: gunmanDeath 20s steps(4) forwards;
+
+}
+
+.gunman-level-4 {
+    width: 33px;
+    height: 75px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_4_walk.gif);
+
+}
+.gunman-level-4.shooting {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_4_duel.gif);
+    left: 380px;
+    width: 30px;
+    height: 85px;
+}
+
+.gunman-level-4.standing, .gunman-level-4.ready {
+    left: 380px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_4_walk_1.png);
+}
+
+
+.gunman-level-4.dead {
+    display: block;
+    position: absolute;
+    top: 220px;
+    left: 380px;
+    width: 33px;
+    height: 95px;
+    bottom: 180px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_4_death.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: gunmanDeath 20s steps(4) forwards;
+
+}
+
+.gunman-level-5 {
+    width: 33px;
+    height: 75px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_5_walk.gif);
+}
+
+.gunman-level-5.shooting {
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_5_duel.gif);
+    left: 380px;
+    width: 30px;
+    height: 85px;
+}
+
+.gunman-level-5.standing, .gunman-level-5.ready {
+    left: 380px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_5_walk_1.png);
+}
+
+.gunman-level-5.dead {
+    display: block;
+    position: absolute;
+    top: 220px;
+    left: 380px;
+    width: 33px;
+    height: 95px;
+    bottom: 180px;
+    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_5_death.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    animation: gunmanDeath 20s steps(4) forwards;
+
+}
+
+
 .gunman.move-to-center {
     animation: walkToCenter 5s forwards;
 }
+
 
 @keyframes walkToCenter {
     0% {
         left: 700px;
     }
     100% {
-        left: 380px; /* Stop here and stay visible */
+        left: 380px;
     }
-}
-
-/* STANDING */
-.gunman.standing {
-    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_stay.gif);
-    left: 340px;
-}
-
-/* READY */
-.gunman.ready {
-    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_stay.gif);
-    left: 340px;
-}
-
-/* SHOOTING */
-.gunman.shooting {
-    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_duel.gif);
-    width: 135px;
-    left: 340px;
-}
-
-/* DEATH */
-.gunman.dead {
-    background-image: url(/javascript/lab7-gunman-game/project_parts/img/gunman_stay.gif);
-    width: 128px;
-    left: 340px;
-    animation: gunmanDeath 1s steps(4);
 }
 
 @keyframes gunmanDeath {
     from {
-        background-position: -1616px 0;
+        background-position: 0 0;
     }
     to {
-        background-position: -2000px 0;
+        background-position: -384px 0;
     }
 }
 
-
-.gunman-level-1__standing {
-    background-position: -400px 0;
-}
-
-.gunman-level-1__ready {
-    background-position: -808px 0;
-}
-
-.gunman-level-1__shooting {
-    animation: gunman-level-1__duel 0.5s step-start;
-    animation-iteration-count: 1;
-    background-position: -940px 0;
-    width: 135px;
-    left: 340px;
-}
-
-.gunman-level-1__death {
-    animation: gunman-level-1__death 1s steps(4);
-    background-position: -1616px 0;
-    width: 128px;
-    left: 340px;
-}
-
-
-@keyframes gunman-level-1__duel {
-    from {
-        background-position: -390px 0;
-    }
-    to {
-        background-position: -650px 0;
-    }
-}
-
-@keyframes gunman-level-1__death {
-    from {
-
-    }
-    to {
-
-    }
-}
-
-
-.moving {
-    left: 340px;
-    transition: left 5s linear;
-}
-
-.standing {
-    left: 340px;
-    animation: none;
-}
-
-/*                              Gunman style                                 */
