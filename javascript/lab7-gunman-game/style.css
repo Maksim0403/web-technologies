@@ -1,7 +1,7 @@
 
 body {
     background: #000;
-    font-family: "PressStart2P";
+    font-family: "Press Start 2P";
 
 }
 
@@ -51,7 +51,7 @@ body {
     border: 0;
     outline: 0;
 
-    font-family: "PressStart2P";
+    font-family: "Press Start 2P";
     font-size: 20px;
     text-transform: uppercase;
 
@@ -175,7 +175,7 @@ body {
     left: 50%;
     top: 30%;
 
-    font-family: "PressStart2P";
+    font-family: "Press Start 2P";
     font-size: 30px;
     color: #fff;
 }
@@ -201,7 +201,7 @@ body {
 .score-panel {
     padding: 10px;
 
-    font-family: "PressStart2P";
+    font-family: "Press Start 2P";
     font-size: 25px;
     text-transform: uppercase;
     text-align: center;
@@ -217,7 +217,7 @@ body {
 
 .time-panel__gunman,
 .time-panel__you {
-    font-family: "Digital-7";
+    font-family: "Digital-7", system-ui;
     font-size: 65px;
 }
 
