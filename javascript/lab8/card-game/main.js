@@ -42,7 +42,7 @@ function createCard(image) {
     card.innerHTML = `
       <div class="card-inner">
         <div class="card-front"></div>
-        <div class="card-back"><img src="${image}" /></div>
+        <div class="card-back"><img src="${image}" alt="img"/></div>
       </div>`;
     card.addEventListener('click', () => handleCardClick(card, image));
     return card;
