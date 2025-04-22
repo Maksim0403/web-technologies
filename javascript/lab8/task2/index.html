@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      user-select: none;
+    }
+    .slider-arrows {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+<div id="slider-root"></div>
+
+<script>
+  function createSlider({
+                          containerId = 'slider-root',
+                          images = [],
+                          duration = 500,
+                          autoplay = false,
+                          showArrows = true,
+                          showDots = true
+                        } = {}) {
+    const container = document.getElementById(containerId);
+    const sliderContainer = document.createElement('div');
+    sliderContainer.className = 'slider-container';
+
+    const sliderTrack = document.createElement('div');
+    sliderTrack.className = 'slider-track';
+
+    images.forEach(src => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.width = '100%';
+      slide.appendChild(img);
+      sliderTrack.appendChild(slide);
+    });
+
+    sliderContainer.appendChild(sliderTrack);
+    container.appendChild(sliderContainer);
+
+    let index = 0;
+    let interval;
+    const updateSlide = () => {
+      sliderTrack.style.transition = `transform ${duration}ms ease-in-out`;
+      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+    };
+
+    const nextSlide = () => {
+      index = (index + 1) % images.length;
+      updateSlide();
+    };
+
+    const prevSlide = () => {
+      index = (index - 1 + images.length) % images.length;
+      updateSlide();
+    };
+
+    if (showArrows) {
+      const leftArrow = document.createElement('button');
+      leftArrow.className = 'slider-arrows arrow-left';
+      leftArrow.textContent = '<';
+      leftArrow.onclick = prevSlide;
+
+      const rightArrow = document.createElement('button');
+      rightArrow.className = 'slider-arrows arrow-right';
+      rightArrow.textContent = '>';
+      rightArrow.onclick = nextSlide;
+
+      sliderContainer.appendChild(leftArrow);
+      sliderContainer.appendChild(rightArrow);
+    }
+
+    let dots = [];
+    if (showDots) {
+      const dotContainer = document.createElement('div');
+      dotContainer.className = 'slider-dots';
+
+      dots = images.map((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.onclick = () => {
+          index = i;
+          updateSlide();
+        };
+        dotContainer.appendChild(dot);
+        return dot;
+      });
+
+      sliderContainer.appendChild(dotContainer);
+    }
+
+    function updateDots() {
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    function startAutoplay() {
+      if (autoplay) {
+        interval = setInterval(nextSlide, 3000);
+      }
+    }
+
+    function stopAutoplay() {
+      if (autoplay) clearInterval(interval);
+    }
+
+    sliderContainer.addEventListener('mouseenter', stopAutoplay);
+    sliderContainer.addEventListener('mouseleave', startAutoplay);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') nextSlide();
+      else if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    updateSlide();
+    startAutoplay();
+  }
+
+  createSlider({
+    images: [
+      'https://picsum.photos/800/400?random=1',
+      'https://picsum.photos/800/400?random=2',
+      'https://picsum.photos/800/400?random=3'
+    ],
+    duration: 600,
+    autoplay: true,
+    showArrows: true,
+    showDots: true
+  });
+</script>
+</body>
+</html>
