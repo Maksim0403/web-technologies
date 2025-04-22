@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kanban Board</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .board {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .column {
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      width: 300px;
+      min-height: 400px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .column h2 {
+      text-align: center;
+    }
+    .task {
+      background: #e0e0e0;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      cursor: grab;
+      transition: background 0.3s;
+    }
+    .task:active {
+      cursor: grabbing;
+    }
+    .column.drag-over {
+      background: #d3f4ff;
+    }
+  </style>
+</head>
+<body>
+
+<h1>📋 Kanban Дошка</h1>
+
+<div class="board">
+  <div class="column" id="todo">
+    <h2>To Do</h2>
+    <div class="task" draggable="true">📝 Завдання 1</div>
+    <div class="task" draggable="true">📝 Завдання 2</div>
+  </div>
+
+  <div class="column" id="in-progress">
+    <h2>In Progress</h2>
+    <div class="task" draggable="true">🔧 Завдання 3</div>
+  </div>
+
+  <div class="column" id="done">
+    <h2>Done</h2>
+    <div class="task" draggable="true">✅ Завдання 4</div>
+  </div>
+</div>
+
+<script>
+  const tasks = document.querySelectorAll('.task');
+  const columns = document.querySelectorAll('.column');
+
+  tasks.forEach(task => {
+    task.addEventListener('dragstart', () => {
+      task.classList.add('dragging');
+    });
+
+    task.addEventListener('dragend', () => {
+      task.classList.remove('dragging');
+    });
+  });
+
+  columns.forEach(column => {
+    column.addEventListener('dragover', e => {
+      e.preventDefault();
+      column.classList.add('drag-over');
+    });
+
+    column.addEventListener('dragleave', () => {
+      column.classList.remove('drag-over');
+    });
+
+    column.addEventListener('drop', e => {
+      const draggedTask = document.querySelector('.dragging');
+      column.appendChild(draggedTask);
+      column.classList.remove('drag-over');
+    });
+  });
+</script>
+
+</body>
+</html>
