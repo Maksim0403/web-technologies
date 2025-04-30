@@ -54,7 +54,7 @@ h1 {
 }
 
 .card-front {
-    background: url('/javascript/lab8/card-game/project_parts/img/bgr.png');
+    background: url('project_parts/img/bgr.png');
 }
 
 .card-back {
