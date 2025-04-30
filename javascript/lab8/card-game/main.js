@@ -1,19 +1,19 @@
 const images = [
-    '/javascript/lab8/card-game/project_parts/img/circle.png',
-    '/javascript/lab8/card-game/project_parts/img/hexagon.png',
-    '/javascript/lab8/card-game/project_parts/img/octagon.png',
-    '/javascript/lab8/card-game/project_parts/img/pentagon.png',
-    '/javascript/lab8/card-game/project_parts/img/rectangle.png',
-    '/javascript/lab8/card-game/project_parts/img/rhombus.png',
-    '/javascript/lab8/card-game/project_parts/img/square.png',
-    '/javascript/lab8/card-game/project_parts/img/triangle.png',
-    '/javascript/lab8/card-game/project_parts/img/star.png',
-    '/javascript/lab8/card-game/project_parts/img/oval.png',
-    '/javascript/lab8/card-game/project_parts/img/heart.png',
-    '/javascript/lab8/card-game/project_parts/img/cross.png',
-    '/javascript/lab8/card-game/project_parts/img/arrow.png',
-    '/javascript/lab8/card-game/project_parts/img/diamond.png',
-    '/javascript/lab8/card-game/project_parts/img/trapezium.png',
+    'project_parts/img/circle.png',
+    'project_parts/img/hexagon.png',
+    'project_parts/img/octagon.png',
+    'project_parts/img/pentagon.png',
+    'project_parts/img/rectangle.png',
+    'project_parts/img/rhombus.png',
+    'project_parts/img/square.png',
+    'project_parts/img/triangle.png',
+    'project_parts/img/star.png',
+    'project_parts/img/oval.png',
+    'project_parts/img/heart.png',
+    'project_parts/img/cross.png',
+    'project_parts/img/arrow.png',
+    'project_parts/img/diamond.png',
+    'project_parts/img/trapezium.png',
 ];
 
 let flippedCards = [], matchedCards = [], moves = 0, time = 0, timerInterval;
@@ -29,8 +29,6 @@ let gameMode = 1;
 const board = document.getElementById('board');
 const movesText = document.getElementById('moves');
 const timerText = document.getElementById('timer');
-
-const stats = [];
 
 function shuffleArray(array) {
     return [...array].sort(() => Math.random() - 0.5);
